@@ -9,21 +9,11 @@ import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# =========================================================
-# SECURITY
-# =========================================================
-
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "")
 
 DEBUG = os.environ.get("DEBUG", "True").lower() == "true"
 
 ALLOWED_HOSTS = ["*"]
-
-
-# =========================================================
-# APPLICATIONS
-# =========================================================
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -38,11 +28,6 @@ INSTALLED_APPS = [
     "rest_framework",
 ]
 
-
-# =========================================================
-# MIDDLEWARE
-# =========================================================
-
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
@@ -53,11 +38,6 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
-
-
-# =========================================================
-# URLS / WSGI
-# =========================================================
 
 ROOT_URLCONF = "core.urls"
 
@@ -78,11 +58,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "core.wsgi.application"
 
-
-# =========================================================
-# DATABASE
-# =========================================================
-
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
@@ -93,11 +68,6 @@ DATABASES = {
         "PORT": os.environ.get("DB_PORT", "3306"),
     }
 }
-
-
-# =========================================================
-# PASSWORD VALIDATION
-# =========================================================
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -114,47 +84,23 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# =========================================================
-# INTERNATIONALIZATION
-# =========================================================
-
 LANGUAGE_CODE = "en-us"
-
 TIME_ZONE = "UTC"
-
 USE_I18N = True
-
 USE_TZ = True
-
-
-# =========================================================
-# STATIC & MEDIA
-# =========================================================
 
 STATIC_URL = "static/"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-
 MEDIA_URL = "media/"
-
-
-# =========================================================
-# CUSTOM USER MODEL
-# =========================================================
 
 AUTH_USER_MODEL = "justlaw.User"
 
-
-# =========================================================
-# DEFAULT PRIMARY KEY
-# =========================================================
-
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-
-# =========================================================
-# CORS
-# =========================================================
-
 CORS_ALLOW_ALL_ORIGINS = True
+
+# Allow Django admin and other POST requests from the Railway domain
+CSRF_TRUSTED_ORIGINS = [
+    "https://justlaw-backend-production.up.railway.app",
+]
