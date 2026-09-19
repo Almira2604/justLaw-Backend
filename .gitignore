@@ -27,3 +27,10 @@ staticfiles/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Local database backups / fixtures
+old_books.json
+old_books_backup.sql
+old_books_no_ids.json
+old_books_original_backup.json
+railway_books_backup.json
